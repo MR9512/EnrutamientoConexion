@@ -1,0 +1,10 @@
+#Desactiva la opción MultiViews, que es utilizada por Apache para buscar archivos cuando no se especifica una extensión en la URL
+Options -MultiViews
+# Habilita el motor de reescritura de URL de Apache
+RewriteEngine On
+#Comprobar si el archivo o directorio no existe
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+#Redirigir todas las solicitudes a index.php
+RewriteRule ^ index.php [QSA,L]
